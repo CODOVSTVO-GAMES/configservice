@@ -29,7 +29,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.codovstvo
       PGADMIN_DEFAULT_PASSWORD: egor
     ports:
-      - "9705:80"
+      - "9706:80"
     networks:
       - configServiceNetwork
 
