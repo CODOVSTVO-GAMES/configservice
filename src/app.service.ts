@@ -151,7 +151,7 @@ export class AppService {
         )
         const arr = []
         for (let l = 0; l < levels.length; l++) {
-            arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate })
+            arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate, m: levels[l].mining })
         }
         return new ConfigDTO('mergeMining', arr)
     }
