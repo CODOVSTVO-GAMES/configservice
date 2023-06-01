@@ -92,6 +92,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience })
+            if (l == 20) break
         }
         return new ConfigDTO('levels', arr)
     }
@@ -107,6 +108,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate, ba: levels[l].bonusattack })
+            if (l == 20) break
         }
         return new ConfigDTO('mainBuildings', arr)
     }
@@ -122,6 +124,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate, pc: levels[l].pricecreate, es: levels[l].eperspawn })
+            if (l == 20) break
         }
         return new ConfigDTO('createBuildings', arr)
     }
@@ -137,6 +140,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate })
+            if (l == 20) break
         }
         return new ConfigDTO('mergeBarracks', arr)
     }
@@ -152,6 +156,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate })
+            if (l == 20) break
         }
         return new ConfigDTO('mergeMining', arr)
     }
@@ -167,6 +172,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate })
+            if (l == 20) break
         }
         return new ConfigDTO('repairBuildings', arr)
     }
@@ -182,6 +188,7 @@ export class AppService {
         const arr = []
         for (let l = 0; l < levels.length; l++) {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate, h: levels[l].hp, d: levels[l].damage, ta: levels[l].typeattask, tc: levels[l].timecreate, pc: levels[l].pricecreate, es: levels[l].eperspawn })
+            if (l == 20) break
         }
         return new ConfigDTO('units', arr)
     }

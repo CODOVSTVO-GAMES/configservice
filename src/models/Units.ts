@@ -27,9 +27,6 @@ export class Units {
     damage: number
 
     @Column()
-    typeattask: string
-
-    @Column()
     timecreate: number
 
     @Column({ type: 'numeric' })
@@ -37,4 +34,7 @@ export class Units {
 
     @Column({ type: 'numeric' })
     eperspawn: number
+
+    @Column()
+    typeattask: string
 }
