@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { ResponseDTO } from './DTO/ResponseDTO';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Between, Repository } from 'typeorm';
-import { ConfigDTO } from './DTO/ConfigDTO';
+import { RequestDTO } from './DTO/RequestDTO';
 import { ResponceConfigDTO } from './DTO/ResponceConfigDTO';
 import { Level } from './models/Level';
+import { ConfigDTO } from './DTO/ConfigDTO';
 
 
 @Injectable()
@@ -19,8 +20,8 @@ export class AppService {
         let status = 200
 
         try {
-            const r = await this.configGetHandler(data)
-            responseDTO.data = r
+            const config = await this.configGetHandler(data)
+            responseDTO.data = config
         }
         catch (e) {
             if (e == 'sessions not found' || e == 'session expired') {
@@ -44,30 +45,35 @@ export class AppService {
     private async configGetHandler(data: any): Promise<ResponceConfigDTO> {
         let configDTO
         try {
-            configDTO = new ConfigDTO(data.level)
+            configDTO = new RequestDTO(data.level)
         } catch (e) {
             throw "parsing data error"
         }
-
         return await this.configGetLogic(configDTO)
     }
 
-    async configGetLogic(configDTO: ConfigDTO): Promise<ResponceConfigDTO> {
-        console.log(configDTO.level)
-        const levelConfig = await this.findStartLevelConfig(configDTO.level)
-        return new ResponceConfigDTO([{ 'kek': 'lol' }, levelConfig])
+    async configGetLogic(reqestDTO: RequestDTO): Promise<ResponceConfigDTO> {
+        const levelConfig = await this.findStartLevelConfig()
+        return new ResponceConfigDTO([levelConfig])
     }
 
     //----------------------------------------------------------
 
-    async findStartLevelConfig(level: number) {
-        return await this.levelRepo.find(
+    async findStartLevelConfig(): Promise<ConfigDTO> {
+        const levels = await this.levelRepo.find(
             {
-                where: {
-                    level: Between(level - 10, level + 10)
-                }
+                select: {
+                    experience: true,
+                    level: true,
+                    id: false
+                },
             }
         )
+        const arr = []
+        for (let l = 0; l < levels.length; l++) {
+            arr.push({ experience: levels[l].experience, level: levels[l].level })
+        }
+        return new ConfigDTO('levels', arr)
     }
 
 }
