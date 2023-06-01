@@ -12,7 +12,7 @@ import { MergeBarracks } from './models/MergeBarracks';
 import { MergeMining } from './models/MergeMining';
 import { RepairBuilding } from './models/RepairBuilding';
 import { Units } from './models/Units';
-import { response } from 'express';
+import { RadarExperience } from './models/RadarExperience';
 
 
 @Injectable()
@@ -26,6 +26,7 @@ export class AppService {
         @InjectRepository(MergeMining) private mergeMiningRepo: Repository<MergeMining>,
         @InjectRepository(RepairBuilding) private repairBuildingsRepo: Repository<RepairBuilding>,
         @InjectRepository(Units) private unitsRepo: Repository<Units>,
+        @InjectRepository(RadarExperience) private radarExperienceRepo: Repository<RadarExperience>,
     ) { }
 
     async configGetResponser(data: any) {
@@ -75,6 +76,7 @@ export class AppService {
         arr.push(await this.findMergeMiningConfig())
         arr.push(await this.findRepairBuildingsConfig())
         arr.push(await this.findUnitsConfig())
+        arr.push(await this.findRadarExperienceConfig())
 
         return new ResponceConfigDTO(arr)
     }
@@ -184,6 +186,21 @@ export class AppService {
             arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate, h: levels[l].hp, d: levels[l].damage, ta: levels[l].typeattask, tc: levels[l].timecreate, pc: levels[l].pricecreate, es: levels[l].eperspawn })
         }
         return new ConfigDTO('units', arr)
+    }
+
+    async findRadarExperienceConfig(): Promise<ConfigDTO> {
+        const radarExp = await this.radarExperienceRepo.find(
+            {
+                select: {
+                    id: false
+                },
+            }
+        )
+        const arr = []
+        for (let l = 0; l < radarExp.length; l++) {
+            arr.push({ l: radarExp[l].level, e: radarExp[l].experience })
+        }
+        return new ConfigDTO('radarExpirience', arr)
     }
 
 }

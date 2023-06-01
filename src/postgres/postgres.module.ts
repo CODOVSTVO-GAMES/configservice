@@ -5,6 +5,7 @@ import { Level } from 'src/models/Level';
 import { MainBuilding } from 'src/models/MainBuilding';
 import { MergeBarracks } from 'src/models/MergeBarracks';
 import { MergeMining } from 'src/models/MergeMining';
+import { RadarExperience } from 'src/models/RadarExperience';
 import { RepairBuilding } from 'src/models/RepairBuilding';
 import { Units } from 'src/models/Units';
 
@@ -17,7 +18,7 @@ import { Units } from 'src/models/Units';
       username: 'keshox',
       password: 'example',
       database: 'configdb',
-      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units],
+      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience],
       synchronize: true,
       autoLoadEntities: true,
     }),

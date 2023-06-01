@@ -10,9 +10,10 @@ import { MergeBarracks } from './models/MergeBarracks';
 import { MergeMining } from './models/MergeMining';
 import { RepairBuilding } from './models/RepairBuilding';
 import { Units } from './models/Units';
+import { RadarExperience } from './models/RadarExperience';
 
 @Module({
-  imports: [PostgresModule, TypeOrmModule.forFeature([Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units])],
+  imports: [PostgresModule, TypeOrmModule.forFeature([Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience])],
   controllers: [AppController],
   providers: [AppService],
 })
