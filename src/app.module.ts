@@ -4,9 +4,15 @@ import { AppService } from './app.service';
 import { PostgresModule } from './postgres/postgres.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Level } from './models/Level';
+import { CreateBuildings } from './models/CreateBuildings';
+import { MainBuilding } from './models/MainBuilding';
+import { MergeBarracks } from './models/MergeBarracks';
+import { MergeMining } from './models/MergeMining';
+import { RepairBuilding } from './models/RepairBuilding';
+import { Units } from './models/Units';
 
 @Module({
-  imports: [PostgresModule, TypeOrmModule.forFeature([Level])],
+  imports: [PostgresModule, TypeOrmModule.forFeature([Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units])],
   controllers: [AppController],
   providers: [AppService],
 })

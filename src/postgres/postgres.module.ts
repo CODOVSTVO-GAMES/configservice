@@ -1,6 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CreateBuildings } from 'src/models/CreateBuildings';
 import { Level } from 'src/models/Level';
+import { MainBuilding } from 'src/models/MainBuilding';
+import { MergeBarracks } from 'src/models/MergeBarracks';
+import { MergeMining } from 'src/models/MergeMining';
+import { RepairBuilding } from 'src/models/RepairBuilding';
+import { Units } from 'src/models/Units';
 
 @Module({
   imports: [
@@ -11,7 +17,7 @@ import { Level } from 'src/models/Level';
       username: 'keshox',
       password: 'example',
       database: 'configdb',
-      entities: [Level],
+      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units],
       synchronize: true,
       autoLoadEntities: true,
     }),
