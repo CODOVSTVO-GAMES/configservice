@@ -8,6 +8,6 @@ export class Level {
     @Column()
     level: number
 
-    @Column()
+    @Column({ type: 'numeric' })
     experience: number
 }
