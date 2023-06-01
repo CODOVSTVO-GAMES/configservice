@@ -27,7 +27,7 @@ export class Units {
     damage: number
 
     @Column()
-    typeattask: number
+    typeattask: string
 
     @Column()
     timecreate: number
