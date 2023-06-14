@@ -253,19 +253,17 @@ export class AppService {
                 l27: enemyTeams[l].level27, n27: enemyTeams[l].num27
             })
         }
-        console.log('1' + arr.length)
-        console.log('2' + this.deleteNull(arr).length)
         return new ConfigDTO('enemyTeams', this.deleteNull(arr))
     }
 
-    deleteNull(array: object[]) {
+    private deleteNull(array: object[]) {
         for (let l = 0; l < array.length; l++) {
             array[l] = this.removeNull(array[l])
         }
         return array
     }
 
-    removeNull<T>(obj: T | any): object {
+    private removeNull<T>(obj: T | any): object {
         Object.keys(obj).forEach((key) => {
             if (obj[key] == null) delete obj[key]
         })
