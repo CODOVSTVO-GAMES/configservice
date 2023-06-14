@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CreateBuildings } from 'src/models/CreateBuildings';
 import { Level } from 'src/models/Level';
 import { MainBuilding } from 'src/models/MainBuilding';
+import { MapEnemyTeams } from 'src/models/MapEnemyTeams';
 import { MergeBarracks } from 'src/models/MergeBarracks';
 import { MergeMining } from 'src/models/MergeMining';
 import { RadarExperience } from 'src/models/RadarExperience';
@@ -18,7 +19,7 @@ import { Units } from 'src/models/Units';
       username: 'keshox',
       password: 'example',
       database: 'configdb',
-      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience],
+      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience, MapEnemyTeams],
       synchronize: true,
       autoLoadEntities: true,
     }),

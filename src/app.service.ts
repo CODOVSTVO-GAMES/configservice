@@ -13,6 +13,7 @@ import { MergeMining } from './models/MergeMining';
 import { RepairBuilding } from './models/RepairBuilding';
 import { Units } from './models/Units';
 import { RadarExperience } from './models/RadarExperience';
+import { MapEnemyTeams } from './models/MapEnemyTeams';
 
 
 @Injectable()
@@ -27,6 +28,8 @@ export class AppService {
         @InjectRepository(RepairBuilding) private repairBuildingsRepo: Repository<RepairBuilding>,
         @InjectRepository(Units) private unitsRepo: Repository<Units>,
         @InjectRepository(RadarExperience) private radarExperienceRepo: Repository<RadarExperience>,
+        @InjectRepository(MapEnemyTeams) private mapEnemyTeamsRepo: Repository<MapEnemyTeams>,
+
     ) { }
 
     async configGetResponser(data: any) {
@@ -63,10 +66,10 @@ export class AppService {
         } catch (e) {
             throw "parsing data error"
         }
-        return await this.configGetLogic(configDTO)
+        return await this.configGetLogic()
     }
 
-    async configGetLogic(reqestDTO: RequestDTO): Promise<ResponceConfigDTO> {
+    async configGetLogic(): Promise<ResponceConfigDTO> {
         const arr = new Array<object>
 
         arr.push(await this.findLevelConfig())
@@ -77,9 +80,11 @@ export class AppService {
         arr.push(await this.findRepairBuildingsConfig())
         arr.push(await this.findUnitsConfig())
         arr.push(await this.findRadarExperienceConfig())
+        arr.push(await this.findMapEnemyTeams())
 
         return new ResponceConfigDTO(arr)
     }
+
 
     //----------------------------------------------------------
 
@@ -201,6 +206,45 @@ export class AppService {
             arr.push({ l: radarExp[l].level, e: radarExp[l].experience })
         }
         return new ConfigDTO('radarExpirience', arr)
+    }
+
+    async findMapEnemyTeams(): Promise<ConfigDTO> {
+        const enemyTeams = await this.mapEnemyTeamsRepo.find(
+            {
+                select: {
+                    id: false
+                },
+            }
+        )
+        const arr = []
+        for (let l = 0; l < enemyTeams.length; l++) {
+            arr.push({
+                n: enemyTeams[l].territoryNumber,
+                l1: enemyTeams[l].level1, n1: enemyTeams[l].num1,
+                l2: enemyTeams[l].level2, n2: enemyTeams[l].num2,
+                l3: enemyTeams[l].level3, n3: enemyTeams[l].num3,
+                l4: enemyTeams[l].level4, n4: enemyTeams[l].num4,
+                l5: enemyTeams[l].level5, n5: enemyTeams[l].num5,
+                l6: enemyTeams[l].level6, n6: enemyTeams[l].num6,
+                l7: enemyTeams[l].level7, n7: enemyTeams[l].num7,
+                l8: enemyTeams[l].level8, n8: enemyTeams[l].num8,
+                l9: enemyTeams[l].level9, n9: enemyTeams[l].num9,
+                l10: enemyTeams[l].level10, n10: enemyTeams[l].num10,
+
+                l11: enemyTeams[l].level11, n11: enemyTeams[l].num11,
+                l12: enemyTeams[l].level12, n12: enemyTeams[l].num12,
+                l13: enemyTeams[l].level13, n13: enemyTeams[l].num13,
+                l14: enemyTeams[l].level14, n14: enemyTeams[l].num14,
+                l15: enemyTeams[l].level15, n15: enemyTeams[l].num15,
+                l16: enemyTeams[l].level16, n16: enemyTeams[l].num16,
+                l17: enemyTeams[l].level17, n17: enemyTeams[l].num17,
+                l18: enemyTeams[l].level18, n18: enemyTeams[l].num18,
+                l19: enemyTeams[l].level19, n19: enemyTeams[l].num19,
+                l20: enemyTeams[l].level20, n20: enemyTeams[l].num20,
+
+            })
+        }
+        return new ConfigDTO('enemyTeams', arr)
     }
 
 }
