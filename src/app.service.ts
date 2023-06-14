@@ -218,6 +218,7 @@ export class AppService {
         )
         const arr = []
         for (let l = 0; l < enemyTeams.length; l++) {
+
             if (this.isNullOrUndefind(enemyTeams[l].territoryNumber)) continue
             arr.push({
                 n: enemyTeams[l].territoryNumber,
@@ -273,8 +274,8 @@ export class AppService {
 
     isNullOrUndefind(value: any) {
         if (value == undefined) return true
-        if (value == null) return false
-        return true
+        if (value == null) return true
+        return false
     }
 
 }
