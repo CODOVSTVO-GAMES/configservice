@@ -218,6 +218,7 @@ export class AppService {
         )
         const arr = []
         for (let l = 0; l < enemyTeams.length; l++) {
+            if (this.isNullOrUndefind(enemyTeams[l].territoryNumber)) continue
             arr.push({
                 n: enemyTeams[l].territoryNumber,
                 l1: enemyTeams[l].level1, n1: enemyTeams[l].num1,
@@ -251,7 +252,26 @@ export class AppService {
                 l27: enemyTeams[l].level27, n27: enemyTeams[l].num27
             })
         }
-        return new ConfigDTO('enemyTeams', arr)
+        return new ConfigDTO('enemyTeams', this.deleteNull(arr))
+    }
+
+    deleteNull(array: object[]) {
+        for (let l = 0; l < array.length; l++) {
+            array[l] = this.removeNull(array[l])
+        }
+        return array
+    }
+
+    removeNull<T>(obj: T | any): object {
+        Object.keys(obj).forEach((key) => {
+            if (obj[key] == null) delete obj[key]
+        })
+        return obj
+    }
+    isNullOrUndefind(value: any) {
+        if (value == undefined) return true
+        if (value == null) return false
+        return true
     }
 
 }
