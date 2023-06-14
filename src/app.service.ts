@@ -252,22 +252,9 @@ export class AppService {
                 l27: enemyTeams[l].level27, n27: enemyTeams[l].num27
             })
         }
-        return new ConfigDTO('enemyTeams', this.deleteNull(arr))
+        return new ConfigDTO('enemyTeams', arr)
     }
 
-    deleteNull(array: object[]) {
-        for (let l = 0; l < array.length; l++) {
-            array[l] = this.removeNull(array[l])
-        }
-        return array
-    }
-
-    removeNull<T>(obj: T | any): object {
-        Object.keys(obj).forEach((key) => {
-            if (obj[key] == null) delete obj[key]
-        })
-        return obj
-    }
     isNullOrUndefind(value: any) {
         if (value == undefined) return true
         if (value == null) return false
