@@ -242,6 +242,13 @@ export class AppService {
                 l19: enemyTeams[l].level19, n19: enemyTeams[l].num19,
                 l20: enemyTeams[l].level20, n20: enemyTeams[l].num20,
 
+                l21: enemyTeams[l].level21, n21: enemyTeams[l].num21,
+                l22: enemyTeams[l].level22, n22: enemyTeams[l].num22,
+                l23: enemyTeams[l].level23, n23: enemyTeams[l].num23,
+                l24: enemyTeams[l].level24, n24: enemyTeams[l].num24,
+                l25: enemyTeams[l].level25, n25: enemyTeams[l].num25,
+                l26: enemyTeams[l].level26, n26: enemyTeams[l].num26,
+                l27: enemyTeams[l].level27, n27: enemyTeams[l].num27
             })
         }
         return new ConfigDTO('enemyTeams', arr)
