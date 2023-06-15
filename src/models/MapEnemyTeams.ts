@@ -145,4 +145,93 @@ export class MapEnemyTeams {
     level27: number
     @Column({ nullable: true })
     num27: number
+
+
+    //награда
+
+    @Column()
+    power: number
+
+    @Column({ nullable: true })
+    bunker: number
+
+    @Column({ nullable: true })
+    treasure: number
+
+    @Column({ nullable: true })
+    trash: number
+
+    @Column({ nullable: true })
+    manipylator: number
+
+    @Column({ nullable: true })
+    main: number
+
+    @Column({ nullable: true })
+    mergesv: number
+
+    @Column({ nullable: true })
+    createbarrack: number
+
+    @Column({ nullable: true })
+    mergebarrack: number
+
+    @Column({ nullable: true })
+    bookwhite: number
+
+    @Column({ nullable: true })
+    bookblue: number
+
+    @Column({ nullable: true })
+    bookviolet: number
+
+    @Column({ nullable: true })
+    bookgreen: number
+
+    @Column({ nullable: true })
+    bluefragment: number
+
+    @Column({ nullable: true })
+    createmining: number
+
+    @Column({ nullable: true })
+    mergemining: number
+
+    @Column({ nullable: true })
+    premiumhining: number
+
+    @Column({ nullable: true })
+    elitehining: number
+
+
+    @Column({ nullable: true })
+    regularhining: number
+
+
+    @Column({ nullable: true })
+    chesttech: number
+
+    @Column({ nullable: true })
+    createwarf: number
+
+    @Column({ nullable: true })
+    mergewharf: number
+
+    @Column({ nullable: true })
+    mergevmf: number
+
+    @Column({ nullable: true })
+    createairport: number
+
+    @Column({ nullable: true })
+    mergeairport: number
+
+    @Column({ nullable: true })
+    mergevvs: number
+
+    @Column({ nullable: true })
+    chestcomponents: number
+
+    @Column({ nullable: true })
+    gems: number
 }

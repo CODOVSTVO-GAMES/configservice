@@ -222,6 +222,7 @@ export class AppService {
             if (this.isNullOrUndefind(enemyTeams[l].territoryNumber)) continue
             arr.push({
                 n: enemyTeams[l].territoryNumber,
+
                 l1: enemyTeams[l].level1, n1: enemyTeams[l].num1,
                 l2: enemyTeams[l].level2, n2: enemyTeams[l].num2,
                 l3: enemyTeams[l].level3, n3: enemyTeams[l].num3,
@@ -250,7 +251,29 @@ export class AppService {
                 l24: enemyTeams[l].level24, n24: enemyTeams[l].num24,
                 l25: enemyTeams[l].level25, n25: enemyTeams[l].num25,
                 l26: enemyTeams[l].level26, n26: enemyTeams[l].num26,
-                l27: enemyTeams[l].level27, n27: enemyTeams[l].num27
+                l27: enemyTeams[l].level27, n27: enemyTeams[l].num27,
+
+                p: enemyTeams[l].power,
+
+                b: enemyTeams[l].bunker, t: enemyTeams[l].treasure, tr: enemyTeams[l].trash,
+
+                mani: enemyTeams[l].manipylator, main: enemyTeams[l].main,
+
+                msv: enemyTeams[l].mergesv, mvmf: enemyTeams[l].mergevmf, mvvs: enemyTeams[l].mergevvs,
+
+                cob: enemyTeams[l].createbarrack, cvb: enemyTeams[l].createwarf, cab: enemyTeams[l].createairport, cm: enemyTeams[l].createmining,
+
+                mob: enemyTeams[l].mergebarrack, mvb: enemyTeams[l].mergewharf, mab: enemyTeams[l].mergeairport, mm: enemyTeams[l].mergemining,
+
+                bw: enemyTeams[l].bookwhite, bg: enemyTeams[l].bookgreen, bv: enemyTeams[l].bookviolet, bb: enemyTeams[l].bookblue,
+
+                fb: enemyTeams[l].bluefragment,
+
+                ph: enemyTeams[l].premiumhining, pe: enemyTeams[l].elitehining, rh: enemyTeams[l].regularhining,
+
+                ct: enemyTeams[l].chesttech, cc: enemyTeams[l].chestcomponents,
+
+                g: enemyTeams[l].gems
             })
         }
         return new ConfigDTO('enemyTeams', this.deleteNull(arr))
