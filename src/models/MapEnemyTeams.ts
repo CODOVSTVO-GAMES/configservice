@@ -8,6 +8,10 @@ export class MapEnemyTeams {
     @Column()
     territoryNumber: number
 
+
+    @Column()
+    type: string
+
     //волна 1
     @Column({ nullable: true })
     level1: number
