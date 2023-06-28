@@ -14,6 +14,7 @@ import { RepairBuilding } from './models/RepairBuilding';
 import { Units } from './models/Units';
 import { RadarExperience } from './models/RadarExperience';
 import { MapEnemyTeams } from './models/MapEnemyTeams';
+import { QuestReward } from './models/QuestReward';
 
 
 @Injectable()
@@ -29,7 +30,7 @@ export class AppService {
         @InjectRepository(Units) private unitsRepo: Repository<Units>,
         @InjectRepository(RadarExperience) private radarExperienceRepo: Repository<RadarExperience>,
         @InjectRepository(MapEnemyTeams) private mapEnemyTeamsRepo: Repository<MapEnemyTeams>,
-
+        @InjectRepository(QuestReward) private questRewardRepo: Repository<QuestReward>
     ) { }
 
     async configGetResponser(data: any) {
@@ -188,7 +189,10 @@ export class AppService {
         )
         const arr = []
         for (let l = 0; l < levels.length; l++) {
-            arr.push({ l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate, h: levels[l].hp, d: levels[l].damage, ta: levels[l].typeattask, tc: levels[l].timecreate, pc: levels[l].pricecreate, es: levels[l].eperspawn })
+            arr.push({
+                l: levels[l].level, e: levels[l].experience, p: levels[l].power, pu: levels[l].priceupdate, ru: levels[l].resourceupdate,
+                h: levels[l].hp, d: levels[l].damage, ta: levels[l].typeattask, tc: levels[l].timecreate, pc: levels[l].pricecreate, es: levels[l].eperspawn
+            })
         }
         return new ConfigDTO('units', arr)
     }
@@ -206,6 +210,21 @@ export class AppService {
             arr.push({ l: radarExp[l].level, e: radarExp[l].experience })
         }
         return new ConfigDTO('radarExpirience', arr)
+    }
+
+    async findQuestGoldConfig(): Promise<ConfigDTO> {
+        const questReward = await this.questRewardRepo.find(
+            {
+                select: {
+                    id: false
+                },
+            }
+        )
+        const arr = []
+        for (let l = 0; l < questReward.length; l++) {
+            arr.push({ l: questReward[l].level, g: questReward[l].gold })
+        }
+        return new ConfigDTO('questReward', arr)
     }
 
     async findMapEnemyTeams(): Promise<ConfigDTO> {
