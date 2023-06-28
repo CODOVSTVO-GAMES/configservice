@@ -82,6 +82,7 @@ export class AppService {
         arr.push(await this.findUnitsConfig())
         arr.push(await this.findRadarExperienceConfig())
         arr.push(await this.findMapEnemyTeams())
+        arr.push(await this.findQuestGoldConfig())
 
         return new ResponceConfigDTO(arr)
     }
