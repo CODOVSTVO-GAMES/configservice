@@ -38,8 +38,8 @@ export class AppService {
         let status = 200
 
         try {
-            const config = await this.configGetHandler(data)
-            responseDTO.data = config
+            const configDTO = new RequestDTO(data.level)
+            responseDTO.data = await this.configGetLogic(configDTO)
         }
         catch (e) {
             if (e == 'sessions not found' || e == 'session expired') {
@@ -59,18 +59,7 @@ export class AppService {
         return responseDTO
     }
 
-
-    private async configGetHandler(data: any): Promise<ResponceConfigDTO> {
-        let configDTO
-        try {
-            configDTO = new RequestDTO(data.level)
-        } catch (e) {
-            throw "parsing data error"
-        }
-        return await this.configGetLogic()
-    }
-
-    async configGetLogic(): Promise<ResponceConfigDTO> {
+    async configGetLogic(data: RequestDTO): Promise<ResponceConfigDTO> {
         const arr = new Array<object>
 
         arr.push(await this.findLevelConfig())
