@@ -240,5 +240,8 @@ export class MapEnemyTeams {
     gems: number
 
     @Column({ nullable: true })
+    price: number
+
+    @Column({ nullable: true })
     expirience: number
 }
