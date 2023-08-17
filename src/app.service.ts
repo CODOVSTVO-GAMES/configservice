@@ -282,7 +282,7 @@ export class AppService {
 
                 ct: enemyTeams[l].chesttech, cc: enemyTeams[l].chestcomponents,
 
-                g: enemyTeams[l].gems
+                g: enemyTeams[l].gems, e: enemyTeams[l].expirience
             })
         }
         return new ConfigDTO('enemyTeams', this.deleteNull(arr))
