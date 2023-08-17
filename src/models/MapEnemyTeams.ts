@@ -239,9 +239,9 @@ export class MapEnemyTeams {
     @Column({ nullable: true })
     gems: number
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, type: 'numeric' })
     price: number
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, type: 'numeric' })
     expirience: number
 }
