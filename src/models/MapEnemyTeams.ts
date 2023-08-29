@@ -8,7 +8,6 @@ export class MapEnemyTeams {
     @Column()
     territoryNumber: number
 
-
     @Column()
     type: string
 
@@ -244,4 +243,10 @@ export class MapEnemyTeams {
 
     @Column({ nullable: true, type: 'numeric' })
     expirience: number
+
+    @Column({ nullable: true })
+    rewardUnitsMyLevel: number
+
+    @Column({ nullable: true })
+    rewardUnitsNextLevel: number
 }
