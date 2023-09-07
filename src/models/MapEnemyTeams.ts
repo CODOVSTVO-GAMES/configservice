@@ -249,4 +249,5 @@ export class MapEnemyTeams {
 
     @Column({ nullable: true })
     rewardUnitsNextLevel: number
+
 }

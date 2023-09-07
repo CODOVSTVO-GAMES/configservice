@@ -15,11 +15,11 @@ import { Units } from 'src/models/Units';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'psqldb',
+      host: 'postgresql-ha-1694074892-pgpool.global-war.svc.cluster.local',
       port: 5432,
-      username: 'keshox',
-      password: 'example',
-      database: 'configdb',
+      username: 'gw',
+      password: 'gw',
+      database: 'gw',
       entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience, MapEnemyTeams, QuestReward],
       synchronize: true,
       autoLoadEntities: true,

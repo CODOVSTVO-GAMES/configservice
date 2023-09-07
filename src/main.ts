@@ -8,8 +8,8 @@ async function bootstrap() {
     app.connectMicroservice<MicroserviceOptions>({
         transport: Transport.RMQ,
         options: {
-            urls: ['amqp://test:test@rabbit:5672'],
-            queue: 'to_config_service',
+            urls: ['amqp://user:8QciDoXBLzYRJItv@rabbitmq-1693989778.global-war.svc.cluster.local:5672'],
+            queue: 'config',
         },
     });
 
