@@ -156,15 +156,6 @@ export class MapEnemyTeams {
     power: number
 
     @Column({ nullable: true })
-    bunker: number
-
-    @Column({ nullable: true })
-    treasure: number
-
-    @Column({ nullable: true })
-    trash: number
-
-    @Column({ nullable: true })
     manipylator: number
 
     @Column({ nullable: true })

@@ -264,8 +264,6 @@ export class AppService {
 
                 p: enemyTeams[l].power,
 
-                b: enemyTeams[l].bunker, t: enemyTeams[l].treasure, tr: enemyTeams[l].trash,
-
                 mani: enemyTeams[l].manipylator, main: enemyTeams[l].main,
 
                 msv: enemyTeams[l].mergesv, mvmf: enemyTeams[l].mergevmf, mvvs: enemyTeams[l].mergevvs,
