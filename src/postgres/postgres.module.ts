@@ -15,7 +15,7 @@ import { Units } from 'src/models/Units';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgresql-ha-1694074892-pgpool.global-war.svc.cluster.local',
+      host: 'postgresql-ha-1694180360-pgpool.global-war.svc.cluster.local',
       port: 5432,
       username: 'gw',
       password: 'gw',
