@@ -15,6 +15,7 @@ import { Units } from './models/Units';
 import { RadarExperience } from './models/RadarExperience';
 import { MapEnemyTeams } from './models/MapEnemyTeams';
 import { QuestReward } from './models/QuestReward';
+import { GoldChest } from './models/GoldChests';
 
 
 @Injectable()
@@ -30,7 +31,8 @@ export class AppService {
         @InjectRepository(Units) private unitsRepo: Repository<Units>,
         @InjectRepository(RadarExperience) private radarExperienceRepo: Repository<RadarExperience>,
         @InjectRepository(MapEnemyTeams) private mapEnemyTeamsRepo: Repository<MapEnemyTeams>,
-        @InjectRepository(QuestReward) private questRewardRepo: Repository<QuestReward>
+        @InjectRepository(QuestReward) private questRewardRepo: Repository<QuestReward>,
+        @InjectRepository(GoldChest) private goldChestRepo: Repository<GoldChest>
     ) { }
 
     async configGetResponser(data: any) {
@@ -72,6 +74,7 @@ export class AppService {
         arr.push(await this.findRadarExperienceConfig())
         arr.push(await this.findMapEnemyTeams())
         arr.push(await this.findQuestGoldConfig())
+        arr.push(await this.findGoldChestConfig())
 
         return new ResponceConfigDTO(arr)
     }
@@ -215,6 +218,21 @@ export class AppService {
             arr.push({ l: questReward[l].level, g: questReward[l].gold })
         }
         return new ConfigDTO('questReward', arr)
+    }
+
+    async findGoldChestConfig(): Promise<ConfigDTO> {
+        const goldChest = await this.goldChestRepo.find(
+            {
+                select: {
+                    id: false
+                },
+            }
+        )
+        const arr = []
+        for (let l = 0; l < goldChest.length; l++) {
+            arr.push({ l: goldChest[l].level, g: goldChest[l].gold })
+        }
+        return new ConfigDTO('goldBalans', arr)
     }
 
     async findMapEnemyTeams(): Promise<ConfigDTO> {
