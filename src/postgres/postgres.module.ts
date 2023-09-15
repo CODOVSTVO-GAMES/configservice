@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CreateBuildings } from 'src/models/CreateBuildings';
+import { GoldChest } from 'src/models/GoldChests';
 import { Level } from 'src/models/Level';
 import { MainBuilding } from 'src/models/MainBuilding';
 import { MapEnemyTeams } from 'src/models/MapEnemyTeams';
@@ -20,7 +21,7 @@ import { Units } from 'src/models/Units';
       username: 'gwCodovstvo',
       password: 'gw',
       database: 'gw',
-      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience, MapEnemyTeams, QuestReward],
+      entities: [Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience, MapEnemyTeams, QuestReward, GoldChest],
       synchronize: true,
       autoLoadEntities: true,
     }),

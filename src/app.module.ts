@@ -13,9 +13,10 @@ import { Units } from './models/Units';
 import { RadarExperience } from './models/RadarExperience';
 import { MapEnemyTeams } from './models/MapEnemyTeams';
 import { QuestReward } from './models/QuestReward';
+import { GoldChest } from './models/GoldChests';
 
 @Module({
-  imports: [PostgresModule, TypeOrmModule.forFeature([Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience, MapEnemyTeams, QuestReward])],
+  imports: [PostgresModule, TypeOrmModule.forFeature([Level, CreateBuildings, MainBuilding, MergeBarracks, MergeMining, RepairBuilding, Units, RadarExperience, MapEnemyTeams, QuestReward, GoldChest])],
   controllers: [AppController],
   providers: [AppService],
 })
